@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Nuestro trabajo</title>
+    <link rel="icon" href="{% static 'image/Logoproyecto.png' %}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="relative">
+            <nav>
+                <ul class="headerlogo">
+                    <li>
+                        <a href="{% url 'menu' %}" target="_self">
+                            <img src="{% static 'image/Logoproyecto.png' %}" alt="logo">
+                            <span class="logo-text">TattoPin 2K25</span>
+                        </a>
+                    </li>
+                    <li><a href="{% url 'menu' %}" target="_self">INICIO</a></li>
+                    <li><a href="{% url 'acercade' %}" target="_self">ACERCA DE</a></li>
+                    <li><a href="{% url 'galeria' %}" target="_self">GALERIA</a></li>
+                    <li><a href="{% url 'carrousel' %}" target="_self">NUESTRO TRABAJO</a></li>
+                    <li><a href="{% url 'tienda' %}" target="_self">TIENDA</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'perfil' %}">Hola, {{ user.username }}</a></li>
+                        <li><a href="{% url 'cerrar' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"><img src="{% static 'image/icons/lock2.png' %}" style="width: 20px;"> CUENTA</a>
+                            <a style="color: #8d8d8d;"></a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'login' %}">Iniciar Sesión</a>
+                                <a href="{% url 'formulario' %}">Crear Cuenta</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="relative">
+        <div class="cuadro">
+            <h1><b>Nuestros trabajos destacados</b></h1>
+
+            <!-- Carrusel de imagenes -->
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="{% static 'image/tattoo1.jpg' %}" alt="Tatuaje de muestra 1">
+                    <img src="{% static 'image/tattoo2.webp' %}" alt="Tatuaje de muestra 2">
+                    <img src="{% static 'image/tattoo3.webp' %}" alt="Tatuaje de muestra 3">
+                    <img src="{% static 'image/tattoo4.jpg' %}" alt="Tatuaje de muestra 4">
+                    <img src="{% static 'image/tattoo5.jpeg' %}" alt="Tatuaje de muestra 5">
+                    <img src="{% static 'image/tattoo6.jpg' %}" alt="Tatuaje de muestra 6">
+                    <img src="{% static 'image/tattoo7.jpg' %}" alt="Tatuaje de muestra 7">
+                    <img src="{% static 'image/tattoo8.webp' %}" alt="Tatuaje de muestra 8">
+                    <img src="{% static 'image/tattoo9.webp' %}" alt="Tatuaje de muestra 9">
+                    <img src="{% static 'image/tattoo10.jpg' %}" alt="Tatuaje de muestra 10">
+                    <img src="{% static 'image/tattoo11.webp' %}" alt="Tatuaje de muestra 11">
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                    <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+                </div>
+            </div>
+            <br>
+            <h2>Un poco de historia del tattoo</h2>
+            <p>Los tatuajes han recorrido un largo camino a lo largo de la historia, desde sus primeras manifestaciones en civilizaciones antiguas como Egipto, Grecia y Roma, 
+                donde se usaban como símbolos de estatus, protección o ritos religiosos. En culturas indígenas de África, Oceanía y América, los tatuajes representaban la conexión 
+                con la espiritualidad, la madurez o la identidad tribal. Durante siglos, los tatuajes fueron relegados a grupos marginales o vinculados a la delincuencia, pero con 
+                la llegada del siglo XX, especialmente en las décadas de 1960 y 1970, comenzaron a ganar popularidad como una forma de expresión artística y personal. Hoy en día, 
+                los tatuajes se han integrado plenamente en la cultura moderna, con una enorme variedad de estilos y técnicas, siendo considerados una forma legítima de arte corporal 
+                que trasciende fronteras sociales y culturales.</p>
+
+            <img src="{% static 'image/tattoostimeline.jpg' %}" alt="Linea temporal de los tatuajes" class="full-width-image">    
+            <h2>Estilos y técnicas de tatuaje</h2>
+            <p>Existen diversos estilos de tatuajes, cada uno con características y tradiciones propias. El estilo tradicional se caracteriza por líneas gruesas, colores sólidos y diseños 
+                simbólicos como anclas, corazones o rosas. El tribal, con raíces en culturas indígenas, usa patrones geométricos y líneas negras para representar fuerzas espirituales o identidades. 
+                El realismo busca replicar imágenes de forma precisa, casi fotográfica, mientras que el neo-tradicional mezcla la estética tradicional con un uso más detallado de sombras y colores. 
+                En cuanto a las formas de tatuar, el uso de máquinas profesionales ha sido la norma desde el siglo XX, pero antes de ellas, se empleaban herramientas primitivas como dientes de hueso o 
+                agujas hechizas para perforar la piel. Estos métodos eran más dolorosos y rudimentarios, pero mostraban la ingenio de las culturas en la creación de tatuajes sin acceso a tecnología avanzada.                
+            </p>
+            <img src="{% static 'image/tiposdetattoo.jpg' %}" alt="Distintos tipos de tattoos" class="full-width-image">
+        </div>
+    </div>
+
+    <!-- ni idea de como funciona este script me lo robe de internet-->
+    <script>
+        let index = 0;
+
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const carousel = document.querySelector('.carousel-images');
+            index = (index + step + slides.length) % slides.length;
+
+            // Ajustar la posición
+            const newTransformValue = -index * 100 + '%';
+            carousel.style.transform = `translateX(${newTransformValue})`;
+        }
+
+        // Auto-play
+        setInterval(() => moveSlide(1), 5000);
+    </script>
+
+    <footer>
+        <div class="relative">Copyright &copy; 2025 TattoPin. Derechos Reservados</div>
+
+        <div class="relative">
+            <nav>
+                <ul>
+                    <li><a href="https://www.instagram.com/" target="_blank">
+                        <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Instagram.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.x.com/" target="_blank">
+                        <img width="35px" height="35px" src="{% static 'image/Redes/Blanco/Twitter.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">
+                    <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Facebook.png' %}" alt="logo"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

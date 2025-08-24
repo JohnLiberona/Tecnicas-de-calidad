@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
+        <title>TattoPin - Configuracion</title>
+        <link rel="icon" href="{% static 'image/Logoproyecto.png' %}" type="image/png">
+    </head>
+<body>
+    <header>
+        <div class="relative">
+            <nav>
+                <ul class="headerlogo">
+                    <li>
+                        <a href="{% url 'menu' %}" target="_self">
+                            <img src="{% static 'image/Logoproyecto.png' %}" alt="logo">
+                            <span class="logo-text">TattoPin 2K25</span>
+                        </a>
+                    </li>
+                    <li><a href="{% url 'menu' %}" target="_self">INICIO</a></li>
+                    <li><a href="{% url 'acercade' %}" target="_self">ACERCA DE</a></li>
+                    <li><a href="{% url 'galeria' %}" target="_self">GALERIA</a></li>
+                    <li><a href="{% url 'carrousel' %}" target="_self">NUESTRO TRABAJO</a></li>
+                    <li><a href="{% url 'tienda' %}" target="_self">TIENDA</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'perfil' %}">Hola, {{ user.username }}</a></li>
+                        <li><a href="{% url 'cerrar' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"><img src="{% static 'image/icons/lock2.png' %}" style="width: 20px;"> CUENTA</a>
+                            <a style="color: #8d8d8d;"></a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'login' %}">Iniciar Sesión</a>
+                                <a href="{% url 'formulario' %}">Crear Cuenta</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% if user.is_authenticated %}
+            <section class="container perfil">
+                <h2 style="text-align: center; color: white; font-weight: bold;">MI PERFIL</h2>
+                <hr>
+                <div class="perfil-info">
+                    <div class="cuadro">
+                        <img src="{% static 'image/avatar.webp' %}" alt="Foto de Perfil" class="img-thumbnail foto-perfil-cuadro" width="150">
+                        <h3>{{ request.user.username }}</h3> <!-- Mostrar el nombre de usuario (no editable) -->
+                        
+                        {% if request.user.is_staff %}
+                            <h2 style="color: red; text-align: center; font-weight: bold; margin-top: 20px;">Usuario Admin no puede ser modificado.</h2>
+                        {% else %}
+                            <p>Nombre: {{ request.user.first_name }}</p>
+                            <p>Apellido: {{ request.user.last_name }}</p>
+                            <p>Email: {{ request.user.email }}</p>
+                            
+                            <hr>
+                            <h3 style="color: white;">Editar Perfil</h3>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+        {% else %}
+            <section class="perfil-restringido">
+                <div class="container text-center">
+                    <h2 style="color: red; font-weight: bold; margin-top: 20px;">Debe estar registrado para configurar su cuenta</h2>
+                    <p style="margin: 15px 0; font-size: 18px;">Por favor, inicie sesión o regístrese para acceder a esta página.</p>
+                    <div class="d-flex justify-content-center" style="gap: 20px;">
+                        <a href="{% url 'login' %}" class="btn btn-primary">Iniciar Sesión</a>
+                        <a href="{% url 'formulario' %}" class="btn btn-secondary">Registrarse</a>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    </main>
+    
+    
+
+    <footer>
+        <div class="relative">Copyright &copy; 2025 TattoPin. Derechos Reservados</div>
+
+        <div class="relative">
+            <nav>
+                <ul>
+                    <li><a href="https://www.instagram.com/" target="_blank">
+                        <img width="25px" height="25px" src="static/image/Redes/Blanco/Instagram.png" alt="logo"></a></li>
+                    <li><a href="https://www.x.com/" target="_blank">
+                        <img width="35px" height="35px" src="static/image/Redes/Blanco/Twitter.png" alt="logo"></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">
+                    <img width="25px" height="25px" src="static/image/Redes/Blanco/Facebook.png" alt="logo"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
+        <title>TattoPin - Register</title>
+        <link rel="icon" href="{% static 'image/Logoproyecto.png' %}" type="image/png">
+    </head>
+ 
+    
+<body data-urlForm="{% url 'menu' %}"> 
+    <header>
+        <div class="relative">
+            <nav>
+                <ul class="headerlogo">
+                    <li>
+                        <a href="{% url 'menu' %}" target="_self">
+                            <img src="{% static 'image/Logoproyecto.png' %}" alt="logo">
+                            <span class="logo-text">TattoPin 2K25</span>
+                        </a>
+                    </li>
+                    <li><a href="{% url 'menu' %}" target="_self">INICIO</a></li>
+                    <li><a href="{% url 'acercade' %}" target="_self">ACERCA DE</a></li>
+                    <li><a href="{% url 'galeria' %}" target="_self">GALERIA</a></li>
+                    <li><a href="{% url 'carrousel' %}" target="_self">NUESTRO TRABAJO</a></li>
+                    <li><a href="{% url 'tienda' %}" target="_self">TIENDA</a></li>
+                    {% if user.is_authenticated %}
+                        <li>>Hola, {{ user.username }}</li>
+                        <li><a href="{% url 'cerrar' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"><img src="{% static 'image/icons/lock2.png' %}" style="width: 20px;"> CUENTA</a>
+                            <a style="color: #8d8d8d;"></a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'login' %}">Iniciar Sesión</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'menu' %}"; // Redirigir a login en 3 segundos
+        }, 2000);
+    </script>
+{% endif %}
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div>
+                    <div class="card-body">
+                        <h2 style="text-align: center; color: #ffffff; font-weight: bold; cursor: default;">Registrarse</h2>
+                        <hr>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="">Nombre de usuario: </label><br>
+                                {{form.username}}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Nombre: </label><br>
+                                {{form.first_name}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Apellido: </label><br>
+                                {{form.last_name}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email: </label><br>
+                                {{form.email}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Contraseña: </label><br>
+                                {{form.password1}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirmar Contraseña: </label><br>
+                                {{form.password2}}
+                            </div>
+
+
+                            <img src="{% static 'image/icons/closeeye2.png' %}" class="pass-icon" alt="show/hide" 
+                            data-open="{% static 'image/icons/openeye2.png' %}" 
+                            data-close="{% static 'image/icons/closeeye2.png' %}">
+                            <input type="submit" value="Registrar" class="form-btn btn-outline-primary" style="background-color: rgb(209, 90, 11);">
+                            <div>
+                                <a href="{% url 'login' %}" class="form-btn btn-link">¿Ya tienes cuenta? - Login</a>
+                                <a href="{% url 'menu' %}" class="form-btn btn-link">Volver a Inicio</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="relative">Copyright &copy; 2025 TattoPin. Derechos Reservados</div>
+        <div class="relative">
+            <nav>
+                <ul>
+                    <li><a href="https://www.instagram.com/" target="_blank">
+                        <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Instagram.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.x.com/" target="_blank">
+                        <img width="35px" height="35px" src="{% static 'image/Redes/Blanco/Twitter.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">
+                    <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Facebook.png' %}" alt="logo"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <script src="{% static 'js/mostrarContra.js' %}"></script>
+    <script src="{% static 'js/formulario.js' %}"></script>
+</body>
+</html>
