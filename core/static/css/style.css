@@ -1,0 +1,820 @@
+/* Esto es para el perfil */
+.foto-perfil-cuadro {
+    border: 5px solid #000000;  /* Bordes negros */
+    border-radius: 50%;  /* Borde redondeado (opcional) */
+    padding: 5px;  /* Espacio entre la imagen y el borde */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+
+/* Esto es para el carrito */
+.input-fecha {
+    width: 250px;  /* Ancho más compacto */
+    padding: 8px;  /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente adecuado */
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 6px; /* Bordes redondeados */
+    text-align: center; /* Centrar el texto */
+}
+
+.table {
+    border-radius: 15px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Para evitar que los bordes se "desborden" */
+    border: none; /* Eliminar el borde por defecto */
+    border-collapse: separate; /* Para que las celdas no se superpongan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega sombra si deseas */
+}
+
+.table th, .table td {
+    border-radius: 10px; /* Bordes redondeados para las celdas */
+    border: none; /* Eliminar bordes de las celdas */
+}
+
+.table th {
+    background-color: #333; /* Un color oscuro para el encabezado */
+}
+
+.table td {
+    background-color: #444; /* Un color ligeramente más claro para las celdas */
+}
+
+/* Estilo exclusivo para el botón de Finalizar Compra */
+.btn-finalizar {
+    background: linear-gradient(135deg, #ff5f6d, #ffc371); /* Degradado de color llamativo */
+    color: white;  /* Texto en blanco */
+    font-weight: bold; /* Texto en negrita */
+    padding: 12px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin bordes */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+/* Efecto al pasar el cursor */
+.btn-finalizar:hover {
+    background: linear-gradient(135deg, #ff3d58, #ffa500); /* Cambio de color */
+    transform: scale(1.05); /* Aumenta un poco de tamaño */
+    box-shadow: 0 4px 10px rgba(255, 95, 109, 0.4); /* Sombra suave */
+}
+
+
+/* Esto es para el minicarrito/pedidos */
+#carrito-contenido {
+    /* Estilos para la lista de productos */
+    list-style: none; /* Quitar viñetas */
+    padding: 0; /* Quitar padding por defecto */
+}
+  
+.producto-carrito {
+    /* Estilos para cada producto en el carrito */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuir espacio entre elementos */
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Agregar un borde inferior */
+}
+  
+.producto-carrito img {
+    /* Estilos para la imagen del tatuaje */
+    width: 50px;
+    height: 50px;
+    margin-right: 10px; /* Agregar margen a la derecha */
+}
+  
+#carrito-total {
+    /* Estilos para el total de la compra */
+    text-align: right; /* Alinear el texto a la derecha */
+    margin-top: 20px; /* Agregar margen superior */
+}
+
+
+/* Esto es para menús desplegables */
+.dropdown {
+    display: inline-flex;
+    position: relative;
+}
+
+/* Estilo del contenido del dropdown */
+.dropdown-content {
+    position: absolute;
+    top: 100%; /* El contenido se coloca justo debajo del contenedor */
+    left: 50%; /* Centra el dropdown respecto a su contenedor */
+    /*transform: translateX(-50%) scaleY(0); /* Inicialmente lo centra y lo reduce en el eje Y */
+    min-width: 150px;
+    max-height: 300px;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #1a1a1a;
+    z-index: 1000; /* Asegura que el dropdown esté sobre otros elementos */
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Transición suave para visibilidad, opacidad y transformación */
+    transform: translateX(-50%);
+    display: flex; /* Usamos flexbox para alinear el contenido */
+    flex-direction: column; /* Los elementos dentro de dropdown-content se apilan verticalmente */
+    align-items: center;
+}
+
+/* Cuando el usuario pasa el cursor sobre el contenedor, se muestra el dropdown */
+.dropdown:hover .dropdown-content {
+    opacity: 1; /* Hace que el contenido sea completamente visible */
+    visibility: visible; /* Asegura que sea accesible */
+}
+
+/* Estilo para los enlaces dentro del dropdown */
+.dropdown-content a {
+    display: block;
+    color: #ffffff;
+    padding: 10px 20px;
+    height: auto;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 16px;
+    margin-bottom: 1px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover en los enlaces del dropdown */
+.dropdown-content a:hover {
+    background-color: #333333;
+    transform: scale(1.1);
+    color: #be804d;
+}
+
+/* Estilo para los elementos de "Cuenta" */
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    cursor: default; /* El cursor no cambia a texto */
+    transition: color 0.3s ease;
+}
+
+/* Cambiar color de texto e imagen al pasar el mouse por encima de "Cuenta" */
+.dropdown-toggle:hover {
+    color: #be804d; /* Cambia el color del texto al pasar el mouse */
+}
+
+/* Estilo para la imagen dentro de la cuenta */
+.dropdown-toggle img {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 8px; 
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de cambio en la imagen al pasar el mouse */
+.dropdown-toggle:hover img {
+    transform: scale(1.2);
+}
+
+/*---------------------------------------*/
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    header nav ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    header nav ul li img{
+        width: clamp(60px, 10vw, 80px);
+        height: clamp(60px, 10vw, 80px);
+    }
+    .cuadro{
+        width: 90%;
+        padding: clamp(8px, 2vw, 10px);
+    }
+    iframe{
+        width: 100%;
+        height: auto;
+    }
+    footer nav ul{
+        flex-direction: column;
+        height: auto;
+    }
+}
+@media (max-width: 480px){
+    nav ul{
+        gap: 5px;
+    }
+    header nav ul li a{
+        font-size: clamp(12px, 3vw, 14px);
+    }
+    .cuadro{
+        padding: clamp(5px, 2vw, 10px);
+        font-size: clamp(12px, 3vw, 14px);
+    }
+    p, a{
+        font-size: clamp(12px, 3vw, 14px);
+    }
+    .dynamic-load-button,
+    .formulario__btn,
+    .carousel-button {
+        width: 100%;
+        font-size: clamp(12px, 4vw, 14px);
+        padding: clamp(8px, 2vw, 12px);
+    }
+}
+
+/*---------------------------------------*/
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #303030;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: #3d3d3d;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: clamp(15px, 3vw, 20px);
+}
+header h1{
+    margin: 0;
+    font-size: clamp(20px, 5vw, 32px);
+}
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 3vw, 15px);
+}
+nav ul li{
+    display: flex;
+    align-items: center;
+}
+
+/*------------------------------------*/
+
+nav ul.headerlogo li {
+    position: relative; /* Necesario para que el texto se posicione correctamente respecto al logo */
+    display: inline-flex;
+    align-items: center;
+}
+
+nav ul.headerlogo li img {
+    width: clamp(80px, 10vw, 100px);
+    height: clamp(80px, 10vw, 100px);
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Transición suave para el efecto de transformación */
+}
+
+nav ul.headerlogo li img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño de la imagen */
+}
+
+nav ul.headerlogo li .logo-text {
+    position: absolute;
+    top: 90%; /* Coloca el texto justo debajo del logo */
+    left: -56%; /* Centra el texto horizontalmente respecto al logo */
+    transform: translateX(50%) translateY(-20px); /* Inicialmente lo coloca un poco hacia abajo */
+    opacity: 0; /* Inicialmente el texto está invisible */
+    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave para el efecto de visibilidad y movimiento */
+}
+
+nav ul.headerlogo li:hover .logo-text {
+    opacity: 1; /* Hace que el texto sea visible */
+    transform: translateX(50%) translateY(0); /* Mueve el texto a su posición original, justo debajo del logo */
+}
+
+/*------------------------------------*/
+
+header nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 2.5vw, 16px);
+    transition: color 0.3s ease;
+}
+header nav ul li a:hover {
+    color:#be804d;
+}
+
+/*---------------------------------------*/
+
+.cuadro{
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    padding: clamp(15px, 3vw, 20px);
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+div.relative{
+    position: relative;
+}
+
+footer{
+    text-align: center;
+    padding: clamp(8px, 2vw, 10px);
+    background-color: #1a1a1a; 
+    color: white;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+p{
+    text-align: justify;
+    font-size: clamp(14px, 3vw, 16px);
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #ffffff; 
+    margin-bottom: 20px;
+}
+a{
+    text-decoration: none;
+    text-align: justify;
+    font-size: clamp(13px, 2.5vw, 15px);
+    font-family: sans-serif;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Navbar Collapsible */
+.navbar {
+    background-color: #000;
+}
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.navbar-toggler-icon {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+}
+.navbar-collapse {
+    justify-content: center;
+}
+
+
+
+/*De aqui para abajo corresponde al sitio carrusel ------------------------------------------------*/
+
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.full-width-image {
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    display: block;
+    margin: 20px 0; 
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ddd;
+}
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+}
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: clamp(5px, 2vw, 10px);
+    cursor: pointer;
+    font-size: clamp(5px, 2.5vw, 16px); 
+    transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 480px) {
+    .carousel-button {
+        padding: 1px; 
+        font-size: 20px; 
+        width: 40px; 
+        height: 40px; 
+        line-height: 40px; 
+    }
+}
+
+/*Aqui esta el estilo del sitio galeria*/
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(10px, 3vw, 20px);
+    padding: clamp(15px, 3vw, 20px);
+}
+
+.gallery-item {
+    text-align: center;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item p {
+    text-align: center;
+    margin: 10px 0;
+    font-size: clamp(14px, 3vw, 16px);
+    color: #333;
+}
+
+/* esta parte es del js para cargar la api*/
+.dynamic-gallery-container {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.dynamic-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.dynamic-images-grid img {
+    width: 100%;
+    height: 200px; /* Altura fija para uniformar las imágenes */
+    object-fit: cover; /* Asegura que las imágenes se recorten para llenar el espacio */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dynamic-images-grid img:hover {
+    transform: scale(1.05);
+}
+
+.dynamic-load-button {
+    margin-top: 20px;
+    background-color: #0075FF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dynamic-load-button:hover {
+    background-color: #0056b3;
+}
+
+/*Aqui esta el estilo de los sitios Formulario y Login*/
+form {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+form h2 {
+    font-size: 2rem;
+    color: #be804d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form label {
+    color: #fff;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #be804d;
+    box-shadow: 0 0 5px rgba(190, 128, 77, 0.8);
+}
+
+form a {
+    color: #be804d;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 10px 0;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+form a:hover {
+    color: #fff;
+}
+
+.form-btn {
+    background-color: #be804d;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-btn:hover {
+    background-color: #9c6a3f;
+}
+
+.btn-link {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    padding: 12px 20px;
+}
+
+.btn-link:hover {
+    color: #fff;
+}
+
+/* Estilos de los errores */
+.alert-danger {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.alert-danger ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.alert-danger ul li {
+    font-size: 1rem;
+}
+
+.pass-icon {
+    height: 20px;
+    width: 20px;
+}
+/*---------------------------------------*/  
+
+    main {
+        max-width: 800px;
+        width: 90%;
+        margin: auto;
+        padding: 40px;
+    }
+    
+    .formulario {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .formulario__label {
+        display: block;
+        font-weight: 700;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .formulario__grupo-input {
+        position: relative;
+    }
+    
+    .formulario__input {
+        width: 100%;
+        background: #fff;
+        border: 3px solid transparent;
+        border-radius: 3px;
+        height: 45px;
+        line-height: 45px;
+        padding: 0 40px 0 10px;
+        transition: .3s ease all;
+    }
+    
+    .formulario__input:focus {
+        border: 3px solid #0075FF;
+        outline: none;
+        box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+    }
+    
+    .formulario__input-error {
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    
+    .formulario__input-error-activo {
+        display: block;
+    }
+    
+    .formulario__validacion-estado {
+        position: absolute;
+        right: 10px;
+        bottom: 15px;
+        z-index: 100;
+        font-size: 16px;
+        opacity: 0;
+    }
+    
+    .formulario__checkbox {
+        margin-right: 10px;
+    }
+    
+    .formulario__grupo-terminos, 
+    .formulario__mensaje,
+    .formulario__grupo-btn-enviar {
+        grid-column: span 2;
+    }
+    
+    .formulario__mensaje {
+        height: 45px;
+        line-height: 45px;
+        background: #F66060;
+        padding: 0 15px;
+        border-radius: 3px;
+        display: none;
+    }
+    
+    .formulario__mensaje-activo {
+        display: block;
+    }
+    
+    .formulario__mensaje p {
+        margin: 0;
+    }
+    
+    .formulario__grupo-btn-enviar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .formulario__btn {
+        height: 45px;
+        line-height: 45px;
+        width: 30%;
+        background: #000;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: .1s ease all;
+    }
+    
+    .formulario__btn:hover {
+        box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+    }
+    
+    .formulario__mensaje-exito {
+        font-size: 14px;
+        color: #119200;
+        display: none;
+    }
+    
+    .formulario__mensaje-exito-activo {
+        display: block;
+    }
+    
+    /* ----- -----  Estilos para Validacion ----- ----- */
+    .formulario__grupo-correcto .formulario__validacion-estado {
+        color: #1ed12d;
+        opacity: 1;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__label {
+        color: #bb2929;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__validacion-estado {
+        color: #bb2929;
+        opacity: 1;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__input {
+        border: 3px solid #bb2929;
+    }
+    
+    
+    /* ----- -----  Mediaqueries ----- ----- */
+    @media screen and (max-width: 800px) {
+        .formulario {
+            grid-template-columns: 1fr;
+        }
+    
+        .formulario__grupo-terminos, 
+        .formulario__mensaje,
+        .formulario__grupo-btn-enviar {
+            grid-column: 1;
+        }
+    
+        .formulario__btn {
+            width: 100%;
+        }
+    }
+
+.barra-filtros{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.barra-filtros label{
+    margin-right: 5px;
+    display: grid;
+    text-align: center;
+    color: #ffffff;
+}
+.barra-filtros select {
+    padding: 3px;
+    text-align: center;
+    border-radius: 12px; /* Bordes redondeados */
+    border: 1px solid #ddd; /* Borde sutil */
+    background-color: #f8f8f8; /* Fondo suave */
+    color: #333; /* Color del texto */
+    font-size: 14px;
+    transition: all 0.3s ease; /* Transición suave */
+    cursor: pointer;
+    appearance: none; /* Elimina la apariencia predeterminada del select en algunos navegadores */
+}
