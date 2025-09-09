@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cargar el archivo static al principio del head -->
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> <!-- Carga el Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Carga tu archivo de estilos personalizado -->
+    <title>Galería de Tatuajes</title>
+    <link rel="icon" href="{% static 'image/Logoproyecto.png' %}" type="image/png"> <!-- Carga el icono -->
+</head>
+<body>
+    <header>
+        <div class="relative">
+            <nav>
+                <ul class="headerlogo">
+                    <li>
+                        <a href="{% url 'menu' %}" target="_self">
+                            <img src="{% static 'image/Logoproyecto.png' %}" alt="logo">
+                            <span class="logo-text">TattoPin 2K25</span>
+                        </a>
+                    </li>
+                    <li><a href="{% url 'menu' %}" target="_self">INICIO</a></li>
+                    <li><a href="{% url 'acercade' %}" target="_self">ACERCA DE</a></li>
+                    <li><a href="{% url 'galeria' %}" target="_self">GALERIA</a></li>
+                    <li><a href="{% url 'carrousel' %}" target="_self">NUESTRO TRABAJO</a></li>
+                    <li><a href="{% url 'tienda' %}" target="_self">TIENDA</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'perfil' %}">Hola, {{ user.username }}</a></li>
+                        <li><a href="{% url 'cerrar' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"><img src="{% static 'image/icons/lock2.png' %}" style="width: 20px;"> CUENTA</a>
+                            <a style="color: #8d8d8d;"></a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'login' %}">Iniciar Sesión</a>
+                                <a href="{% url 'formulario' %}">Crear Cuenta</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <h1 style="color: white; text-align: center; margin-top: 20px;"><b>Galería de Tatuajes</b></h1>
+        <div class="gallery-container">
+            <!-- Elementos de la galería -->
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo12.jpg' %}" alt="Tatuaje geometrico">
+                <p><b> Estilo patrones geométricos</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo13.jpg' %}" alt="Tatuaje Anime">
+                <p><b> Estilo tradicional One piece</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo14.webp' %}" alt="Tatuaje Anime">
+                <p><b> Estilo tradicional Kimetsu</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo15.jpg' %}" alt="Tatuaje Anime">
+                <p><b> Estilo tradicional Naruto</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo16.jfif' %}" alt="Tatuaje Neotradicional">
+                <p><b> Estilo neotradicional zorro</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo17.jpg' %}" alt="Tatuaje Neotradicional">
+                <p><b> Estilo neotradicional ojo </b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo18.jfif' %}" alt="Tatuaje geométrico">
+                <p><b> Estilo geométrico patrones </b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo19.webp' %}" alt="Tatuaje geométrico">
+                <p><b> Estilo geométrico mandala</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo20.jpg' %}" alt="Tatuaje Semirealista">
+                <p><b> Estilo semirealista el guason</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo1.jpg' %}" alt="Tatuaje Araña/Serpiente">
+                <p><b> Estilo tradicional Serpiente/Araña</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo2.webp' %}" alt="Tatuaje de Rosa">
+                <p><b> Rosa Abstracta</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo3.webp' %}" alt="Tatuaje Tribal">
+                <p><b> Estilo neopunk geométrico</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo4.jpg' %}" alt="Tatuaje mano esquelética">
+                <p><b> Mano de Calavera en rosas</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo5.jpeg' %}" alt="Tatuaje de Araña">
+                <p><b> Araña Surrealista</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo6.jpg' %}" alt="Tatuaje neotradicional santo">
+                <p><b> Rostro sagrado neo-tradicional</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo7.jpg' %}" alt="Tatuaje de araña tradicional">
+                <p><b> Araña en su tela</b></p>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'image/tattoo8.webp' %}" alt="Tatuaje Abstracto reloj emo">
+                <p><b> Reloj abstracto romanticismo</b></p>
+            </div>
+        </div>
+    
+        <section id="tattoo-gallery" class="dynamic-gallery-container">
+            <h2>¿Buscas inspiración para tu nuevo tattoo?</h2>
+            <div id="images-container" class="dynamic-images-grid">
+                <!-- Las imágenes se insertarán aquí dinámicamente -->
+            </div>
+            <button id="load-images" class="dynamic-load-button">¡Inspírame!</button>
+        </section>
+    </main>
+    
+
+    <footer>
+        <div class="relative">Copyright &copy; 2025 TattoPin. Derechos Reservados</div>
+
+        <script src="{% static 'js/buscador.js' %}"></script> <!-- Carga tu archivo JS -->
+
+        <div class="relative">
+            <nav>
+                <ul>
+                    <li><a href="https://www.instagram.com/" target="_blank">
+                        <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Instagram.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.x.com/" target="_blank">
+                        <img width="35px" height="35px" src="{% static 'image/Redes/Blanco/Twitter.png' %}" alt="logo"></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">
+                    <img width="25px" height="25px" src="{% static 'image/Redes/Blanco/Facebook.png' %}" alt="logo"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

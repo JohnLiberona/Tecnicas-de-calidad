@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Listado</title>
+    <link rel="icon" href="{% static 'image/Logoproyecto.png' %}" type="image/png">
+</head>
+<body>
+    {% if user.is_staff or user.is_superuser %}
+    <div class="container">
+        <h1>LISTADO DE TATTOOS</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Codigo</th>    
+                    <th>Titulo</th>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for tattoo in datos %}
+                <tr>
+                    <td>{{ tattoo.codigo }}</td>
+                    <td>{{ tattoo.titulo }} </td>
+                    <td>{{ tattoo.tipo }}</td>
+                    <td>{{ tattoo.categoria }}</td>
+                    <td>{{ tattoo.precio }}</td>
+                    {% if tattoo.imagen %}
+                        <td scope="row">
+                            <img src="{{ tattoo.imagen.url}}" style="height:50px; width:50px;">    
+                        </td>
+                    {% endif %}
+                    <td><a href="{% url 'eliminar' tattoo.codigo %}" class="btn btn-danger">Eliminar</a></td>
+                    <td><a href="{% url 'modificar' tattoo.codigo %}" class="btn btn-primary">Modificar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'form_tattoo' %}" class="btn btn-success">Crear tattoo</a>
+        <a href="{% url 'tienda' %}" class="btn btn-primary">Volver</a>
+    </div>
+    {% else %}
+    <h3>No tienes permisos para acceder a esta página.</h3>
+{% endif %}
+</body>
+</html>
